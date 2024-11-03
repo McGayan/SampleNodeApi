@@ -35,7 +35,7 @@ jobs:
         with:
           name: node-app
           path: release.zip
-	
+
       - name: Run a script
         env:
             COSMOS_CONNECTION_STRING: ${{ secrets.COSMOS_CONNECTION_STRING }}
