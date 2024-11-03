@@ -11,8 +11,8 @@ app.use(cors());
 const appController = new ServiceController();
 
 appController.init().then(() => {
-	console.log('database and container created Successfully'); }).catch(() => {
-		console.log('database and container creation failed');
+	console.log('database and container created Successfully'); }).catch((err) => {
+		console.log(`database and container creation failed\nMessage:  ${err}`);
 		process.exit(1);
 	});
 
