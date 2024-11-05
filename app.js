@@ -12,7 +12,7 @@ const appController = new ServiceController();
 
 appController.init().then(() => {
 	console.log('database and container created Successfully'); }).catch((err) => {
-		console.log(`database and container creation failed\nMessage:  ${err}`);
+		console.log(`Database and container creation failed\nException: ${err}`);
 		process.exit(1);
 	});
 

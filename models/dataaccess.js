@@ -4,28 +4,21 @@ const { CosmosClient } = require('@azure/cosmos');
 //const CosmosClient = require('@azure/cosmos');
 //import { appConfig } from "../appconfig/config.js";
 const appConfig = require('../appconfig/config.js');
-const { log, Console } = require('console');
 
 class DataAcecss
 {
 	constructor()
 	{
-		console.log("+++++++++++++++++++++=====================+++++++++++++++++==============\n");
-		console.log(appConfig.conneectionString);
-		console.log("\n+++++++++++++++++++++=====================+++++++++++++++++==============");
+		console.log("----> connection string:" + appConfig.conneectionString);
 		this.client = new CosmosClient(appConfig.conneectionString);
-		console.log("==> 1");
 		this.databaseId = appConfig.databaseId;
-		console.log(appConfig.databaseId);
 		this.collectionId = appConfig.containerId;
-		console.log(appConfig.containerId);
-		console.log("==> 2");
 	}
 	
 	async checkDatabaseExists(databaseId)
 	{
 		const { resources: databases } = await this.client.databases.readAll().fetchAll();
-		console.log("==> 3.2");
+		
 		// Check if the database with the given ID exists
 		const databaseExists = databases.some(db => db.id === databaseId);
 		return databaseExists;
@@ -34,9 +27,7 @@ class DataAcecss
 
 	async initDbAndContainer()
 	{
-		console.log("==> 3");
 		const exists = await this.checkDatabaseExists(this.databaseId);
-		console.log("==> 4");
 		if (exists)
 		{
 			console.log(`Database "${this.databaseId}" exists.`);
