@@ -9,7 +9,7 @@ class DataAcecss
 {
 	constructor()
 	{
-		console.log("----> connection string:" + appConfig.conneectionString);
+		console.log("----> Connection string:" + appConfig.conneectionString);
 		this.client = new CosmosClient(appConfig.conneectionString);
 		this.databaseId = appConfig.databaseId;
 		this.collectionId = appConfig.containerId;
